@@ -1,9 +1,9 @@
 <script setup>
   import { ref } from "vue";
 
-  import CompanyName from "./CompanyName.vue";
-  import Sidebar from "./Sidebar.vue";
   import ThemePicker from "./ThemePicker.vue";
+  import LoggedUser from "./LoggedUser.vue";
+
   import { store } from './store.js';
 
   const name = ref("Pavel Bureš");
@@ -21,11 +21,7 @@
 
     <div class="navbarRight">
       <ThemePicker/>
-      <div class="name">
-        <i class="bi bi-person-fill"></i>
-        {{ name }}
-      </div>
-      
+      <LoggedUser/>
       <i class="bi bi-bell-fill"></i>
       <i class="bi bi-gear"></i>
     </div>
@@ -53,6 +49,7 @@
 
   .navbarRight {   
     display: flex;
+    align-items: center;
     gap: 15px;
     /* justify-content: space-between; */
   }  

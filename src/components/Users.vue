@@ -23,7 +23,7 @@
       const response = await fetch(urlUsersAPI);
       const json = await response.json();
       state.users = json.results;
-      console.log(json.results);
+      //console.log(json.results);
     } catch (error) {
       console.error('Error fetching users', error);
     } finally {

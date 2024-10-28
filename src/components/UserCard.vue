@@ -15,7 +15,7 @@
 <template>
   <div class="userDetail">
     <div class="card cardTheme" style="width: 18rem;">
-        <img :src="user.picture.large" class="card-img-top" alt="...">
+        <img :src="user.picture.large" class="card-img-top">
         <!-- <div :class="[ store.isDarkTheme ? 'bg-dark' : '', 'card-body']"> -->
         <div class="card-body">
             <h5 :class="['card-title', store.isDarkTheme ? 'text-light' : '']">{{ user.name.first }} {{ user.name.last }}</h5>
