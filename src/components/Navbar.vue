@@ -11,7 +11,6 @@
 
 <template>
   <div class="navBar">
-
     <div class="navbarLeft">
       <!-- <button :class="store.isDarkTheme ? 'btn btn-dark' : 'btn btn-light'" @click="store.toggleSidebar"><i class="bi bi-list"></i></button> -->
       <button class='btn btnTheme' @click="store.toggleSidebar"><i class="bi bi-list"></i></button>
@@ -33,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
     /* flex-shrink: 0; */
     /* width: 100%; */
   }

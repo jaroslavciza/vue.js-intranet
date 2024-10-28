@@ -32,6 +32,7 @@ import Navbar from "./components/Navbar.vue";
     /* padding: 0; */
     /* font-size: 1rem; */
   }
+  
   #app {
     padding: 0;
   }
@@ -95,9 +96,9 @@ import Navbar from "./components/Navbar.vue";
   }
 
   .btnTheme {
-    background-color: var(--background-color-secondary);
     border-color: var(--button-border-color);
     color: var(--text-color-primary);
+    background-color: var(--background-color-secondary);
   }
 
   .btnTheme:hover {
