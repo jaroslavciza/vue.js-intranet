@@ -6,14 +6,14 @@ import Sidebar from "./components/Sidebar.vue";
 import Navbar from "./components/Navbar.vue";
 // import Dashboard from "./components/Dashboard.vue";
 
-// import { store } from './components/store.js';
+import { store } from './components/store.js';
 
 </script>
 
 <template>
     <div class="header"><Navbar/></div>
     <div class="content">
-        <div class="sidebar"><Sidebar/></div>
+        <div class="sidebar" id="sidebar"><Sidebar/></div>
         <div class="main"> <RouterView/></div>
     </div>
 </template>
@@ -45,14 +45,15 @@ html, body {
 .content {
     display: flex;
     height: calc(100svh - 60px);
+    padding-top: 5px;
     color: var(--text-color-primary);
     background-color:var(--background-color-primary);        
 }
 
 .sidebar {
-    width: 230px;
+    width: 255px;
     overflow-y: auto;
-    padding: 15px 15px 0 15px;
+    /* padding: 15px 15px 0 15px; */
     scrollbar-width: thin;
     scrollbar-color: var(--background-color-secondary) var(--background-color-primary);     
 }
@@ -60,7 +61,7 @@ html, body {
 .main {
     flex: 1;
     overflow-y: auto;
-    padding: 15px 15px 0 15px;
+    padding: 0 15px 0 15px;
     scrollbar-width: thin;
     scrollbar-color: var(--background-color-secondary) var(--background-color-primary);     
 }

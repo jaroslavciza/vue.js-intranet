@@ -13,7 +13,7 @@
 <template>
     <div class="navbarLeft">
         <!-- <button class='btn btnTheme' @click="store.toggleSidebar"><i class="bi bi-list"></i></button> -->
-        <i class="bi bi-list"></i>
+        <i class="bi bi-list" @click="store.toggleSidebar"></i>
         <CompanyName/>     
     </div>
 

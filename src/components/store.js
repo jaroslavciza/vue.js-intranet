@@ -2,15 +2,17 @@ import { reactive } from 'vue'
 // import LoggedUser from './LoggedUser.vue';
 
 export const store = reactive({
-    isSidebarCollapsed: false,
+    isSidebarVisible: true,
     isDarkTheme: null, //light theme x dark theme variable
     //loggedUser: Object,
 
     toggleSidebar() {
-        if (this.isSidebarCollapsed) {
-            this.isSidebarCollapsed = false;
+        if (this.isSidebarVisible) {
+            document.getElementById("sidebar").style.display = "none";
+            this.isSidebarVisible = false;
         } else {
-            this.isSidebarCollapsed = true;
+            document.getElementById("sidebar").style.display = "block";
+            this.isSidebarVisible = true;
         }
     },
 
