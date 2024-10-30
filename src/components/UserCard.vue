@@ -3,11 +3,20 @@
     import { store } from './store.js';
 
     defineProps({
-    user: {
-        type: Object,
-        default: {},
-    }
-});
+        user: {
+            type: Object,
+            default: {},
+        }
+    });
+
+    // const showUser = () => {
+    //     console.log(props);
+    //     //return true;
+    // };
+    
+    const showUser = () => {
+        console.log(props)
+    };
 
 
 </script>
@@ -27,8 +36,10 @@
                 {{ user.phone }} <br>
                 {{ user.cell }} <br>
                 {{ user.email }}
+                {{ user.id.value }}
             </p>
-            <a href="#" class="btn btnTheme">Detail uživatele</a>
+            <a :href="'/organizace/uzivatel/'+user.id.value" class="btn btnTheme">Detail uživatele</a>
+
         </div>
     </div>     
   </div>

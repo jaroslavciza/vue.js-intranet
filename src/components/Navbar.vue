@@ -1,50 +1,48 @@
 <script setup>
-  import { ref } from "vue";
+  // import { ref } from "vue";
 
   import ThemePicker from "./ThemePicker.vue";
   import LoggedUser from "./LoggedUser.vue";
+  import CompanyName from "./CompanyName.vue";
 
   import { store } from './store.js';
 
-  const name = ref("Pavel Bureš");
+
 </script>
 
 <template>
-  <div class="navBar">
     <div class="navbarLeft">
-      <!-- <button :class="store.isDarkTheme ? 'btn btn-dark' : 'btn btn-light'" @click="store.toggleSidebar"><i class="bi bi-list"></i></button> -->
-      <button class='btn btnTheme' @click="store.toggleSidebar"><i class="bi bi-list"></i></button>
-      <input class="form-control" type="search" placeholder="Hledat..." aria-label="Search">
-      <!-- <CompanyName/> -->     
+        <!-- <button class='btn btnTheme' @click="store.toggleSidebar"><i class="bi bi-list"></i></button> -->
+        <i class="bi bi-list"></i>
+        <CompanyName/>     
+    </div>
+
+    <div class="navbarMiddle">
+        <input class="form-control" type="search" placeholder="Hledat..." aria-label="Search">
     </div>
 
     <div class="navbarRight">
-      <ThemePicker/>
-      <LoggedUser/>
-      <i class="bi bi-bell-fill"></i>
-      <i class="bi bi-gear"></i>
+        <ThemePicker/>
+        <LoggedUser/>
+        <i class="bi bi-bell-fill"></i>
+        <i class="bi bi-gear"></i>
     </div>
-  </div>
 </template>
 
 <style>
-  .navBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* flex-shrink: 0; */
-    /* flex-shrink: 0; */
-    /* width: 100%; */
-  }
-
   .navbarLeft {   
+    /* width: 256px; */
     display: flex;
     gap: 15px;
-    /* justify-content: space-between;  */
+    align-items: center;
   }
-  .navbarLeft button {
+  .navbarLeft i {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  /* .navbarLeft button {
     border: solid 1px var(--button-border-color);
-  }
+  } */
 
   .navbarRight {   
     display: flex;

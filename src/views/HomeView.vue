@@ -1,10 +1,9 @@
 <script setup>
-// import { ref } from "vue";
-// import Sidebar from "./components/Sidebar.vue";
-// import Navbar from "./components/Navbar.vue";
-import Dashboard from "../components/Dashboard.vue";
+  // import { ref } from "vue";
 
-// import { store } from './components/store.js';
+  import Dashboard from "../components/Dashboard.vue";
+
+  // import { store } from './components/store.js';
 
 </script>
 

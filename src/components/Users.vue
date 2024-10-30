@@ -47,7 +47,7 @@
   
 <style>
   .users {
-    padding-top: 15px;  
+    /* padding-top: 15px;   */
     flex: 1; 
     overflow-y: auto;
     /* width: 100%; */
@@ -57,7 +57,7 @@
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between; */
-    gap: 30px;
+    gap: 15px;
     /* width: 100%; */
 
   }

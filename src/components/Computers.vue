@@ -14,9 +14,11 @@
 
 <style>
   .computers {
-    padding-top: 15px;
-    flex: 1;
-    overflow-y: auto;
+    /* padding-top: 15px; */
+    /* flex: 1; */
+    /* overflow-y: auto; */
+
+    
     /* width: 100%; */
   }
 </style>

@@ -20,9 +20,9 @@ const tasks = ref(["Úkol 1", "Úkol 2", "Úkol 3"]);
   
 <style>
   .dashboard {
-    padding-top: 15px;  
-    flex: 1; 
-    overflow-y: auto;
+    /* padding-top: 15px;   */
+    /* flex: 1;  */
+    /* overflow-y: auto; */
 
     /* display: flex;
     flex-direction: column;*/
