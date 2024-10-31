@@ -28,37 +28,39 @@
 
 <template>
 
-    <div class="loggedUser" v-if="state.loggedUserName !== ''">
+    <div class="loggedUser">
         <div v-if="state.loggedUserThumbnail !== ''">
             <img :src="state.loggedUserThumbnail" class="">
         </div>
         <div v-else class="fs-3 ">
             <i class="bi bi-person-circle"></i>
         </div>
-        {{ state.loggedUserName }}
+        <span class="loggedUserName">
+          {{ state.loggedUserName }}
+        </span>
     </div>
 
 </template>
 
 <style scoped>
-  .loggedUser {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 0 10px 0 10px;
-    border-left: 1px solid var(--text-color-primary);
-    border-right: 1px solid var(--text-color-primary);
-  }
-
-  .loggedUser img {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-  }
-
-  @media (max-width: 768px) { 
     .loggedUser {
-      display: none;
-    }  
-  }
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        /* padding: 0 10px 0 10px; */
+        /* border-left: 1px solid var(--text-color-primary);
+        border-right: 1px solid var(--text-color-primary); */
+    }
+
+    .loggedUser img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
+
+    @media (max-width: 768px) { 
+        .loggedUserName {
+        display: none;
+        }  
+    }
 </style>

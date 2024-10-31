@@ -13,11 +13,6 @@
     isLoading: true,
   });
 
-  const testUser = {
-    name: "Pavel Bureš",
-    age: 30,
-  };
-
   onMounted(async () => {
     try {
       const response = await fetch(urlUsersAPI);
@@ -47,19 +42,15 @@
   
 <style>
   .users {
-    /* padding-top: 15px;   */
     flex: 1; 
     overflow-y: auto;
-    /* width: 100%; */
+    overflow-x: auto;
   }
 
   .userList {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     gap: 15px;
-    /* width: 100%; */
-
   }
   
 </style>

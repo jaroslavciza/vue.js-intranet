@@ -4,10 +4,13 @@
   import ThemePicker from "./ThemePicker.vue";
   import LoggedUser from "./LoggedUser.vue";
   import CompanyName from "./CompanyName.vue";
+  import SearchBar from "./HiddenSearchBar.vue";
 
   import { store } from './store.js';
 
-
+  const showHiddenSearchbar = () => {
+        document.getElementById("hiddenSearchBar").style.display = "block";
+    };
 </script>
 
 <template>
@@ -22,10 +25,13 @@
     </div>
 
     <div class="navbarRight">
+        <div class="searchIcon">
+            <i class="bi bi-search" @click="showHiddenSearchbar()"></i>
+        </div>      
         <ThemePicker/>
-        <LoggedUser/>
         <i class="bi bi-bell-fill"></i>
         <i class="bi bi-gear"></i>
+        <LoggedUser/>
     </div>
 </template>
 
@@ -57,9 +63,18 @@
     border-right: 1px solid var(--text-color-primary);
   }
 
+  .searchIcon {
+        display:none;
+        cursor: pointer;
+    }
+
   @media (max-width: 768px) { 
-    .name {
+    .navbarMiddle {
       display: none;
     }  
+
+    .searchIcon {
+        display:block;
+    }
   }
 </style>

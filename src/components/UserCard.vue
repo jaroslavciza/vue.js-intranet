@@ -23,7 +23,7 @@
 
 <template>
   <div class="userDetail">
-    <div class="card cardTheme" style="width: 18rem;">
+    <div class="card cardTheme">
         <img :src="user.picture.large" class="card-img-top">
         <!-- <div :class="[ store.isDarkTheme ? 'bg-dark' : '', 'card-body']"> -->
         <div class="card-body">
@@ -39,7 +39,6 @@
                 {{ user.id.value }}
             </p>
             <a :href="'/organizace/uzivatel/'+user.id.value" class="btn btnTheme">Detail uživatele</a>
-
         </div>
     </div>     
   </div>
@@ -55,7 +54,7 @@
     }
 
     .card-img-top{
-        width: 65%;
+        width: 35%;
         border-radius: 50%;
         margin: 0 auto;
         box-shadow: 0 0 15px var(--shadow-color-secondary);
@@ -63,13 +62,6 @@
     }
     .userDetail {
         padding: 5px;
-        /* padding-top: 15px;  
-        
-        flex: 1; 
-        overflow-y: auto; */
-        /* width: 100%; */
-
-        /* display: flex;
-        flex-direction: column;*/
+        flex:1;
     }
 </style>
