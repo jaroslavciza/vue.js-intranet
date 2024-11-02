@@ -78,9 +78,11 @@
     <hr>  
     <div v-for="section in menu" class="menuSection">
         <h2>{{ section.name }}</h2>
-        <div  v-for="menuItem in section.menuItems" :class="[isActiveMenuLink(menuItem.url)? 'menuItemActive':'', 'menuItem'] ">
+        <div  v-for="menuItem in section.menuItems">
             <RouterLink :to="menuItem.url">
-                <i :class="menuItem.icon"></i> {{ menuItem.name }}
+                <div  :class="[isActiveMenuLink(menuItem.url)? 'menuItemActive':'', 'menuItem'] ">
+                    <i :class="menuItem.icon"></i> {{ menuItem.name }}
+                </div>
             </RouterLink>
         </div>
         <hr>
@@ -112,9 +114,6 @@
         margin-bottom: 0;
     }
 
-    hr {
-
-    }
     a {
         text-decoration: none;
         color: var(--text-color-primary);
