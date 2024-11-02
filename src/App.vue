@@ -5,8 +5,10 @@
     import Sidebar from "./components/Sidebar.vue";
     import Navbar from "./components/Navbar.vue";
     import HiddenSearchBar from "./components/HiddenSearchBar.vue";
+    import MenuUserDetail from "./components/MenuUserDetail.vue";
 
-    
+    import { store } from "./components/store";
+
     const isSidebarVisible = ref(window.innerWidth > 768);     
     const toggleSidebar = () => {
         isSidebarVisible.value = !isSidebarVisible.value;
@@ -16,6 +18,11 @@
     const toggleHiddenSearchbar = () => {
         isHiddenSearchbarVisible.value = !isHiddenSearchbarVisible.value;
     };  
+
+    // const isMenuUserDetailVisible = ref(true);
+    // const toggleMenuUserDetail = () => {
+    //     isMenuUserDetailVisible.value = !isMenuUserDetailVisible.value;
+    // }; 
 
     //zmen viditelnost na zaklade rozliseni
     const handleResize = () => {
@@ -35,15 +42,21 @@
 </script>
 
 <template>
+    <!-- zkousim oboje volani jak ze store tak do child komponenty -->
     <div id="hiddenSearchBar" v-if="isHiddenSearchbarVisible">
         <HiddenSearchBar :toggleHiddenSearchbar="toggleHiddenSearchbar"/>
     </div>  
+    <div id="menuUserDetail" v-if="store.isMenuUserDetailVisible">
+        <!-- <MenuUserDetail :toggleMenuUserDetail="toggleMenuUserDetail"/> -->
+        <MenuUserDetail/>
+    </div>  
+
     <div class="header">
         <Navbar :toggleSidebar="toggleSidebar"  :toggleHiddenSearchbar="toggleHiddenSearchbar"/>
     </div>
     <div class="content">
         <div class="sidebar" id="sidebar" v-show="isSidebarVisible"><Sidebar/></div>
-        <div class="main"> <RouterView/></div>
+        <div class="main"><RouterView/></div>
     </div>
 </template>
 
@@ -53,6 +66,7 @@
         padding: 0;
         min-height: 100svh;
         font-family: Arial, sans-serif;
+        font-size: 1rem;
         overflow: hidden;
     }
 
@@ -95,6 +109,18 @@
         min-width: 100svw;
         background-color:var(--background-color-primary);
     }
+
+    #menuUserDetail {
+        position: absolute;
+        z-index: 2; 
+        right: 15px;
+        /* padding: 15px; */
+        top: var(--header-height);
+        background-color:var(--background-color-primary);
+        border: 1px solid var(--text-color-primary);
+        border-radius: 10px;
+        color: var(--text-color-primary);
+    }    
 
     .main {
         flex: 1;

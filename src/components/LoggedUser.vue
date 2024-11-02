@@ -1,45 +1,51 @@
 <script setup>
-    import { reactive, onMounted } from "vue";
+    import { onMounted } from "vue";
 
-    // import { store } from './store.js';
+    import { store } from './store.js';
 
-    const state = reactive({
-        user: {},
-        loggedUserName: "",
-        loggedUserThumbnail: "",
-    });
+    // const state = reactive({
+    //     user: {},
+    //     // loggedUserName: "",
+    //     // loggedUserThumbnail: "",
+    // });
 
-    const urlUsersAPI = "https://randomuser.me/api";
+    // const urlUsersAPI = "https://randomuser.me/api";
+    const urlUsersAPI = "https://randomuser.me/api/?seed=seed"; //retezec seed vrátí konkretni zaznam API (Ryder Singh)
 
     onMounted(async () => {
         try {
             const response = await fetch(urlUsersAPI);
             const json = await response.json();
 
-            state.loggedUserName = json.results[0].name.first + " " + json.results[0].name.last;
-            state.loggedUserThumbnail = json.results[0].picture.thumbnail;
+            // state.loggedUserName = await json.results[0].name.first + " " + json.results[0].name.last;
+            // state.loggedUserThumbnail = await json.results[0].picture.thumbnail;
+
+            store.setLoggedUser (await json.results[0])
+            //store.loggedUser = await json.results[0];
         } catch (error) {
             console.error('Error fetching users', error);
         } finally {
-            //state.isLoading = false;
+            //store.isLoggedUserLoading = false;
         }
     });
 </script>
 
 <template>
-
-    <div class="loggedUser">
-        <div v-if="state.loggedUserThumbnail !== ''">
-            <img :src="state.loggedUserThumbnail" class="">
+        <div v-if="store.isLoggedUserLoading" class="loggedUser">
+            <i class="bi bi-person-circle"></i> Přihlásit se
         </div>
-        <div v-else class="fs-3 ">
-            <i class="bi bi-person-circle"></i>
-        </div>
-        <span class="loggedUserName">
-          {{ state.loggedUserName }}
-        </span>
-    </div>
+        <div v-else class="loggedUser"> 
 
+            <div v-if="store.loggedUserThumbnail !== ''">
+                <img :src="store.loggedUserThumbnail" class="">
+            </div>
+            <div v-else class="fs-3 ">
+                <i class="bi bi-person-circle"></i>
+            </div>
+            <span class="loggedUserName">
+                {{ store.loggedUserFullName }}
+            </span>
+        </div>
 </template>
 
 <style scoped>
@@ -47,9 +53,6 @@
         display: flex;
         gap: 10px;
         align-items: center;
-        /* padding: 0 10px 0 10px; */
-        /* border-left: 1px solid var(--text-color-primary);
-        border-right: 1px solid var(--text-color-primary); */
     }
 
     .loggedUser img {

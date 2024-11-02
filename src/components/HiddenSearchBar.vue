@@ -32,4 +32,9 @@
         padding: 0 15px 0 15px;   
         color: var(--text-color-primary);
     }
+
+    .navbarLeft i {
+        font-size: 2rem;
+        cursor: pointer;
+    }    
 </style>

@@ -4,6 +4,7 @@
     import CompanyName from "./CompanyName.vue";
 
     import { defineProps } from 'vue';
+import { store } from "./store";
     const props = defineProps({
         toggleSidebar: {
             type: Function,
@@ -33,33 +34,33 @@
         <ThemePicker/>
         <i class="bi bi-bell-fill"></i>
         <i class="bi bi-gear"></i>
-        <LoggedUser/>
+        <div @click="store.toggleMenuUserDetailVisibility" class="loggedUser">
+            <LoggedUser/>
+        </div>
     </div>
 </template>
 
-<style>
-  .navbarLeft {   
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
-  .navbarLeft i {
-    font-size: 2rem;
-    cursor: pointer;
-  }
+<style scoped>
+    .navbarLeft {   
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+    .navbarLeft i {
+        font-size: 2rem;
+        cursor: pointer;
+    }
 
+    .navbarRight {   
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }  
 
-  .navbarRight {   
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }  
+     .loggedUser {
+        cursor: pointer;
+    }
 
-  .name {
-    padding: 0 10px 0 10px;
-    border-left: 1px solid var(--text-color-primary);
-    border-right: 1px solid var(--text-color-primary);
-  }
 
   .searchIcon {
         display:none;

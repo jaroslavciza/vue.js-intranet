@@ -22,10 +22,10 @@ const router = createRouter({
         //name: "organization",
         //component: HomeView,
         children: [
-          {
-            path: '',
-            component: UsersView,
-          },             
+          // {
+          //   path: '',
+          //   component: UsersView,
+          // },             
           {
             path: "uzivatele",
             component: UsersView,
