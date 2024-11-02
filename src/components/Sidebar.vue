@@ -1,19 +1,8 @@
 <script setup>
-    import { ref } from "vue";
+    // import { ref } from "vue";
     import { RouterLink, useRoute } from 'vue-router';
 
-    import { store } from './store.js';
-
-    // const isActiveSectionLink = (routePath) => {
-    //     const route = useRoute();      
-    //     const firstURLelement = "/"+ route.path.split("/")[1]
-    //     const firstURLelementRoutePath = "/"+ routePath.split("/")[1]
-    //     console.log (firstURLelement, firstURLelementRoutePath);
-    //     //console.log (routePath);
-
-    //     //return route.path === routePath;
-    //     return firstURLelement == firstURLelementRoutePath;
-    // };
+    // import { store } from './store.js';
 
     const isActiveMenuLink = (routePath) => {
       const route = useRoute();
@@ -21,7 +10,6 @@
     };    
     
     const menu = [
-        // {id:0, name: "Dashboard", menuItems: []},
         {
             id:1, 
             name: "IT", 
@@ -82,53 +70,26 @@
 </script>
 
 <template>
-    <!-- <div v-if="!store.isSidebarVisible"> -->
-        <div :class="[isActiveMenuLink('/')? 'menuItemActive':'', 'menuSection']">
-            <RouterLink to="/">
-                <h2>Dashboard</h2>
-            </RouterLink>      
+    <div :class="[isActiveMenuLink('/')? 'menuItemActive':'', 'menuSection']">
+        <RouterLink to="/">
+            <h2>Dashboard</h2>
+        </RouterLink>      
+    </div>
+    <hr>  
+    <div v-for="section in menu" class="menuSection">
+        <h2>{{ section.name }}</h2>
+        <div  v-for="menuItem in section.menuItems" :class="[isActiveMenuLink(menuItem.url)? 'menuItemActive':'', 'menuItem'] ">
+            <RouterLink :to="menuItem.url">
+                <i :class="menuItem.icon"></i> {{ menuItem.name }}
+            </RouterLink>
         </div>
-        <hr>  
-        <!-- <div v-for="section in menu" :class="[isActiveMenuLink(section.url)? 'menuItemActive':'', 'menuSection']"> -->
-        <div v-for="section in menu" class="menuSection">
-            <h2>{{ section.name }}</h2>
-            <div  v-for="menuItem in section.menuItems" :class="[isActiveMenuLink(menuItem.url)? 'menuItemActive':'', 'menuItem'] ">
-                <RouterLink :to="menuItem.url">
-                    <i :class="menuItem.icon"></i> {{ menuItem.name }}
-                </RouterLink>
-            </div>
-            <hr>
-        </div>
-    <!-- </div> -->
-            
-
-    <!-- <div :class="[isActiveMenuLink(menuItem.url) ? 'menuItemActive' : '', 'menuItem']" v-for="(menuItem) in menu" :key="menuItem.name">
-        <hr  v-if="menuItem.submenu.length !== 0">
-        <RouterLink :to="menuItem.url">
-            <i :class="menuItem.icon"></i>
-            <span v-if="!store.isSidebarCollapsed">{{ menuItem.name }}</span>
-        </RouterLink>
-        
-        <div  v-if="menuItem.submenu.length !== 0">
-            <div :class="[isActiveSubmenuLink(submenuItem.url) ? 'submenuItemActive' : '', 'menuItem']"  
-                v-for="(submenuItem) in menuItem.submenu" :key="submenuItem.name">
-                <RouterLink :to="submenuItem.url">
-                    <i :class="submenuItem.icon"></i>
-                    <span v-if="!store.isSidebarCollapsed">{{ submenuItem.name }}</span>      
-                </RouterLink>          
-            </div>               
-        </div>
-        <hr  v-if="menuItem.submenu.length !== 0">
-    </div>      -->
-
+        <hr>
+    </div>
 </template>
 
 <style scoped>
     .menuSection {
-        /* border-bottom: 1px solid #222; */
-        /* padding: 10px 5px 10px 10px; */
         padding: 0 10px 0 10px;
-
     }
 
     .menuItem {

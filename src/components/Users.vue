@@ -18,13 +18,10 @@
       const response = await fetch(urlUsersAPI);
       const json = await response.json();
       state.users = json.results;
-      //console.log(json.results);
     } catch (error) {
       console.error('Error fetching users', error);
     } finally {
       state.isLoading = false;
-      //console.log(state.users);
-      //console.log (typeof(testUser));
     }
   });
 </script>
@@ -34,9 +31,7 @@
     <h2>Uživatelé</h2>
     <div class="userList">
       <UserCard v-for="(user, index) in state.users" :key="index" :user="user"/>
-    </div>
-    <!-- {{ state.users }} -->
-     
+    </div>   
   </div>
 </template>
   

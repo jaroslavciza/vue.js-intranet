@@ -1,22 +1,24 @@
 <script setup>
-  // import { ref } from "vue";
+    import ThemePicker from "./ThemePicker.vue";
+    import LoggedUser from "./LoggedUser.vue";
+    import CompanyName from "./CompanyName.vue";
 
-  import ThemePicker from "./ThemePicker.vue";
-  import LoggedUser from "./LoggedUser.vue";
-  import CompanyName from "./CompanyName.vue";
-  import SearchBar from "./HiddenSearchBar.vue";
-
-  import { store } from './store.js';
-
-  const showHiddenSearchbar = () => {
-        document.getElementById("hiddenSearchBar").style.display = "block";
-    };
+    import { defineProps } from 'vue';
+    const props = defineProps({
+        toggleSidebar: {
+            type: Function,
+            required: true,
+        },
+        toggleHiddenSearchbar: {
+            type: Function,
+            required: true,
+        }   
+    });
 </script>
 
 <template>
     <div class="navbarLeft">
-        <!-- <button class='btn btnTheme' @click="store.toggleSidebar"><i class="bi bi-list"></i></button> -->
-        <i class="bi bi-list" @click="store.toggleSidebar"></i>
+        <i class="bi bi-list" @click="toggleSidebar"></i>
         <CompanyName/>     
     </div>
 
@@ -26,7 +28,7 @@
 
     <div class="navbarRight">
         <div class="searchIcon">
-            <i class="bi bi-search" @click="showHiddenSearchbar()"></i>
+            <i class="bi bi-search" @click="toggleHiddenSearchbar"></i>
         </div>      
         <ThemePicker/>
         <i class="bi bi-bell-fill"></i>
@@ -37,7 +39,6 @@
 
 <style>
   .navbarLeft {   
-    /* width: 256px; */
     display: flex;
     gap: 15px;
     align-items: center;
@@ -46,15 +47,12 @@
     font-size: 2rem;
     cursor: pointer;
   }
-  /* .navbarLeft button {
-    border: solid 1px var(--button-border-color);
-  } */
+
 
   .navbarRight {   
     display: flex;
     align-items: center;
     gap: 15px;
-    /* justify-content: space-between; */
   }  
 
   .name {
