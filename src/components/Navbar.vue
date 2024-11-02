@@ -4,7 +4,8 @@
     import CompanyName from "./CompanyName.vue";
 
     import { defineProps } from 'vue';
-import { store } from "./store";
+    import { store } from "./store";
+    
     const props = defineProps({
         toggleSidebar: {
             type: Function,

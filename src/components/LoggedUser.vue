@@ -1,5 +1,5 @@
 <script setup>
-    import { onMounted } from "vue";
+    import { onMounted, defineProps } from "vue";
 
     import { store } from './store.js';
 
@@ -8,6 +8,14 @@
     //     // loggedUserName: "",
     //     // loggedUserThumbnail: "",
     // });
+
+    const props = defineProps({
+        isNameDisplayResponsive: {
+            type: Boolean,
+            default: true,
+        },
+    });
+
 
     // const urlUsersAPI = "https://randomuser.me/api";
     const urlUsersAPI = "https://randomuser.me/api/?seed=seed"; //retezec seed vrátí konkretni zaznam API (Ryder Singh)
@@ -42,7 +50,7 @@
             <div v-else class="fs-3 ">
                 <i class="bi bi-person-circle"></i>
             </div>
-            <span class="loggedUserName">
+            <span :class="props.isNameDisplayResponsive ? 'loggedUserName' : ''">
                 {{ store.loggedUserFullName }}
             </span>
         </div>

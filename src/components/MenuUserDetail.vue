@@ -16,7 +16,7 @@
 
 <template>
     <div class="menuUserDetailWrapper">
-        <LoggedUser/>
+        <LoggedUser :isNameDisplayResponsive="false"/>
         <br>
         <!-- <hr> -->
         <div v-if="!store.isLoggedUserLoading" class="userDetails">
