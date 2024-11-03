@@ -4,6 +4,8 @@ import UsersView from "../views/UsersView.vue";
 import ComputersView from "../views/ComputersView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 
+import StaffChanges from "@/components/StaffChanges.vue";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,6 +32,10 @@ const router = createRouter({
             path: "uzivatele",
             component: UsersView,
           },  
+          {
+            path: "personalni-zmeny",
+            component: StaffChanges,
+          },           
           {
             path: 'pocitace',
             component: ComputersView,

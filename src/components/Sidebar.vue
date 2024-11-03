@@ -20,6 +20,11 @@
                     url: "/organizace/uzivatele",
                 },
                 {
+                    name: "Personální změny",
+                    icon: 'bi bi-person-fill-exclamation',
+                    url: "/organizace/personalni-zmeny",
+                },                
+                {
                     name: 'Počítače',
                     url: "/organizace/pocitace",
                     icon: 'bi bi-pc-display-horizontal',
@@ -97,6 +102,10 @@
     .menuItem {
         padding:15px;
         cursor: pointer;
+    }
+
+    .menuItem i {
+        padding-right: 5px;
     }
 
     .menuItemActive {

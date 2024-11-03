@@ -6,6 +6,7 @@
     import Navbar from "./components/Navbar.vue";
     import HiddenSearchBar from "./components/HiddenSearchBar.vue";
     import MenuUserDetail from "./components/MenuUserDetail.vue";
+    import MenuNotifications from "./components/MenuNotifications.vue";
 
     import { store } from "./components/store";
 
@@ -39,6 +40,21 @@
     onBeforeUnmount(() => {
         window.removeEventListener('resize', handleResize);
     });
+
+    const urlUsersAPI = "https://randomuser.me/api?nat=gb";
+    // const urlUsersAPI = "https://randomuser.me/api/?seed=seed"; //retezec seed vrátí konkretni zaznam API (Ryder Singh)
+    onMounted(async () => {
+        try {
+            const response = await fetch(urlUsersAPI);
+            const json = await response.json();
+            
+            store.setLoggedUser (await json.results[0])
+        } catch (error) {
+            console.error('Error fetching users', error);
+        } finally {
+            //store.isLoggedUserLoading = false;
+        }
+    });    
 </script>
 
 <template>
@@ -50,6 +66,10 @@
         <!-- <MenuUserDetail :toggleMenuUserDetail="toggleMenuUserDetail"/> -->
         <MenuUserDetail/>
     </div>  
+    <div id="menuNotifications" v-if="store.isMenuNotificationsVisible">
+        <!-- <MenuUserDetail :toggleMenuUserDetail="toggleMenuUserDetail"/> -->
+        <MenuNotifications/>
+    </div>      
 
     <div class="header">
         <Navbar :toggleSidebar="toggleSidebar"  :toggleHiddenSearchbar="toggleHiddenSearchbar"/>
@@ -114,14 +134,24 @@
         position: absolute;
         z-index: 2; 
         right: 15px;
-        /* padding: 15px; */
+        max-width: 300px;;
         top: var(--header-height);
         background-color:var(--background-color-primary);
         border: 1px solid var(--text-color-primary);
         border-radius: 10px;
         color: var(--text-color-primary);
     }    
-
+    #menuNotifications {
+        position: absolute;
+        z-index: 2; 
+        right: 15px;
+        max-width: 300px;
+        top: var(--header-height);
+        background-color:var(--background-color-primary);
+        border: 1px solid var(--text-color-primary);
+        border-radius: 10px;
+        color: var(--text-color-primary);
+    } 
     .main {
         flex: 1;
         overflow-y: auto;

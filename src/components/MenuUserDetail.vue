@@ -22,11 +22,11 @@
         <div v-if="!store.isLoggedUserLoading" class="userDetails">
 
             @{{ store.loggedUser.login.username }} <br>
-            Zobrazit profil
+            <i class="bi bi-person-fill"></i> Zobrazit profil
             <hr>
         </div>
-            Nastavení<br>
-            Ohlásit se
+        <i class="bi bi-gear"></i> Nastavení<br>
+        <i class="bi bi-box-arrow-right"></i> Ohlásit se
     </div>
 </template>
   
@@ -37,7 +37,8 @@
 
     }
 
-    .userDetails {
+    .menuUserDetailWrapper i {
+        padding-right: 5px;
         
     }
 

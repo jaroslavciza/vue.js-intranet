@@ -5,7 +5,7 @@
 
     import { defineProps } from 'vue';
     import { store } from "./store";
-    
+
     const props = defineProps({
         toggleSidebar: {
             type: Function,
@@ -32,9 +32,22 @@
         <div class="searchIcon">
             <i class="bi bi-search" @click="toggleHiddenSearchbar"></i>
         </div>      
+        
         <ThemePicker/>
-        <i class="bi bi-bell-fill"></i>
-        <i class="bi bi-gear"></i>
+        <div v-if="(!store.isLoggedUserLoading)" class="relative" @click="store.toggleMenuNotificationsVisibility">
+        
+            
+            
+            
+            <i class="bi bi-bell-fill"></i>
+            <div v-if="(store.loggedUser.registered.age > 0)">
+                <span class="notificationsNumber" v-if="(store.loggedUser.registered.age < 100)">
+                    {{ store.loggedUser.registered.age }}
+                </span>
+                <span class="notificationsNumber" v-else>99</span>
+            </div>
+        </div>
+
         <div @click="store.toggleMenuUserDetailVisibility" class="loggedUser">
             <LoggedUser/>
         </div>
@@ -58,14 +71,40 @@
         gap: 15px;
     }  
 
-     .loggedUser {
+    .navbarRight i {
+        cursor: pointer;
+    }    
+
+    .loggedUser {
         cursor: pointer;
     }
 
-
-  .searchIcon {
-        display:none;
+    .relative {
+        position: relative;
+    }
+    .notificationsNumber {
         cursor: pointer;
+        position: absolute;
+        top: -9px;
+        right: -9px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        
+        font-size: 0.7rem;
+        font-weight: bold;
+        color: rgb(254 226 226);
+        background-color: rgb(248 113 113);
+        border-radius: 50%;
+
+        width: 20px;                /* Minimální šířka kruhu */
+        height: 20px;          
+
+    }
+
+    .searchIcon {
+        display:none;
     }
 
   @media (max-width: 768px) { 

@@ -4,9 +4,7 @@
 
   import UserCard from "./UserCard.vue";
 
-  const status = ref("active");
-  const tasks = ref(["Úkol 1", "Úkol 2", "Úkol 3"]);
-  const urlUsersAPI = "https://randomuser.me/api?results=10";
+  const urlUsersAPI = "https://randomuser.me/api?results=10&nat=gb";
 
   const state = reactive({
     users: [],
@@ -27,10 +25,13 @@
 </script>
 
 <template>
+  <h2>Uživatelé</h2>
   <div class="users">
-    <h2>Uživatelé</h2>
-    <div class="userList">
-      <UserCard v-for="(user, index) in state.users" :key="index" :user="user"/>
+    <div v-if="state.isLoading">
+        Načítají se data...
+    </div>    
+    <div v-else class="userList">
+        <UserCard v-for="(user, index) in state.users" :key="index" :user="user"/>
     </div>   
   </div>
 </template>

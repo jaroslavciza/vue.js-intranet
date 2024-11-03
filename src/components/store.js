@@ -20,6 +20,7 @@ export const store = reactive({
     // Metoda pro nastavení uživatelských dat
     setLoggedUser(user) {
         this.loggedUser = user;
+        // this.loggedUser.registered.age = 0;
         this.isLoggedUserLoading = false; // Po nastavení uživatele se nastaví flag načítání dat na false
     }, 
     
@@ -28,7 +29,17 @@ export const store = reactive({
     isMenuUserDetailVisible: false,
     toggleMenuUserDetailVisibility() {
         this.isMenuUserDetailVisible = !this.isMenuUserDetailVisible;
+        if (this.isMenuUserDetailVisible) {
+            this.isMenuNotificationsVisible = false;
+        }
     },
-
+    
+    isMenuNotificationsVisible: false,
+    toggleMenuNotificationsVisibility() {
+        this.isMenuNotificationsVisible = !this.isMenuNotificationsVisible;
+        if (this.isMenuNotificationsVisible) {
+            this.isMenuUserDetailVisible = false;
+        }
+    },
 })
 // loggedUserName: loggedUser.name.first + " " + loggedUser.name.last,
