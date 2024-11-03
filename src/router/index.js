@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from "vue-router";
+// import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router"; //hashhistory je kvuli github pages, kde není podpora pro server-side směrování
 import HomeView from "../views/HomeView.vue";
 import UsersView from "../views/UsersView.vue";
 import ComputersView from "../views/ComputersView.vue";
@@ -7,7 +8,7 @@ import NotFoundView from "../views/NotFoundView.vue";
 import StaffChanges from "@/components/StaffChanges.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
         path: "/",
